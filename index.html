@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="import" href="./components/ReproductorDeVideo/ReproductorDeVideo.html">
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    #reproductor {
+        width: 800px;
+        height: 60vh;
+    }
+</style>
+
+<body>
+    <repro-video id=reproductor></repro-video>
+
+
+    <script>
+        const $reproductor = document.querySelector('#reproductor')
+        const video = $reproductor.querySelector('video');
+        console.log($reproductor)
+        $reproductor.setAttribute('description', "Big Buck Bunny tells the story of a giant rabbit with a heart bigger than himself. When one sunny day three rodents rudely harass him, something snaps... and the rabbit ain't no bunny anymore! In the typical cartoon tradition he prepares the nasty rodents a comical revenge.\n\nLicensed under the Creative Commons Attribution license\nhttp://www.bigbuckbunny.org")
+        $reproductor.setAttribute('title', "Titulito por fiin")
+        $reproductor.setAttribute('volume', "20")
+        $reproductor.setAttribute('src', "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4")
+
+
+    </script>
+</body>
+
+</html>

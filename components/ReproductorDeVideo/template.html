@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        #reproductor {
+            width: 60vw;
+            height: auto;
+            background: #2d3436;
+            padding: 10px;
+            /* display: flex;
+            flex-flow: column;
+            justify-content: space-between;
+            align-items: center; */
+            /* position: relative; */
+        }
+
+
+
+        #title {
+            /* position: absolute; */
+            text-align: center;
+            height: auto;
+            width: 100%;
+            font-size: 34px;
+            font-weight: bold;
+            font-family: Helvetica;
+            top: 20px;
+            color: #ecf0f1;
+            margin-bottom: 10px;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            /* position: relative; */
+            border-radius: 5px;
+        }
+
+        #description {
+            height: auto;
+            width: 100%;
+            font-size: 14px;
+            color: black;
+            text-align: center;
+            color: #ecf0f1;
+            font-family: Helvetica;
+
+        }
+    </style>
+    <div id="reproductor">
+
+        <div id="title"> Title</div>
+        <video src="" controls></video>
+        <div id="description">Aquí va la descripción</div>
+    </div>
+</body>
+
+</html>
