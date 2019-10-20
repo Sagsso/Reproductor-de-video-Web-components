@@ -36,7 +36,7 @@ class ReproductorDeVideo extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ['src', 'controls', 'description', 'title'];
+    return ['src', 'controls', 'description', 'title', 'volume'];
   }
 
   addListeners() {
@@ -78,7 +78,6 @@ class ReproductorDeVideo extends HTMLElement {
 
   updateVolume(val) {
     const video = this.shadow.querySelector('video');
-    console.log('video')
     video.volume = val / 100;
   }
 
@@ -89,6 +88,14 @@ class ReproductorDeVideo extends HTMLElement {
 
   updateTitle(val) {
     this.shadow.querySelector('#title').innerHTML = val;
+  }
+
+  updateControls(val) {
+    if (val == true) {
+      this.shadow.querySelector('video').setAttribute("controls", "controls")
+    } else {
+      this.shadow.querySelector('video').removeAttribute('controls');
+    }
   }
 
 
@@ -112,7 +119,7 @@ class ReproductorDeVideo extends HTMLElement {
         this.shadow.innerHTML = template;
         this.callPending();
         this.flag.status = true;
-        // this.addListeners();
+        this.addListeners();
       });
     });
 
