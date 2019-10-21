@@ -111,7 +111,7 @@ class ReproductorDeVideo extends HTMLElement {
 
   connectedCallback() {
     let template;
-    fetch('/components/ReproductorDeVideo/template.html', {
+    fetch('./components/ReproductorDeVideo/template.html', {
       method: 'GET',
     }).then((response) => {
       response.text().then((data) => {
