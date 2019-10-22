@@ -17,23 +17,29 @@
         }
 
         #drop_area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 80vw;
             height: 20vh;
-            background-color: cadetblue;
+            background-color: #00a8ff;
+            border-radius: 5px;
+        }
+
+        .border {
+            border: 3px solid #40739e;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        .drag_over {
+            background-color: #2980b9;
         }
     </style>
-    <script>
-        // function allowDrop(ev) {
-        //     ev.preventDefault();
-        //     ev.dataTransfer.dropEffect = 'move';
-        // }
-        // function dropFiles(ev) {
-        //     ev.preventDefault();
-        //     let files = ev.dataTransfer.files;
-        //     console.log(files)
-        // }
-    </script>
     <div id="drop_area">
+        <h1>Drop the config</h1>
     </div>
 </body>
 

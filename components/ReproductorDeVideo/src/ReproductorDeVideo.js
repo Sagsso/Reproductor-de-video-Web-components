@@ -98,7 +98,18 @@ class ReproductorDeVideo extends HTMLElement {
     }
   }
 
+  updateAttributes({ volume, controls, src }) {
+    this.setAttribute('volume', volume)
+    this.setAttribute('controls', controls)
+    this.setAttribute('src', src)
+  }
 
+  updateElementPlaying({ src, title, description }) {
+    this.setAttribute('src', src)
+    this.setAttribute('title', title)
+    this.setAttribute('description', description)
+    this.shadow.querySelector('video').play()
+  }
   callPending() {
     console.log('holaaa callPending')
 
