@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="import" href="./components/ReproductorDeVideo/ReproductorDeVideo.html">
     <link rel="import" href="./components/DragnDrop/DragnDrop.html">
+    <link rel="import" href="./components/Playlist/Playlist.html">
 </head>
 <style>
     * {
@@ -25,11 +26,13 @@
         width: 800px;
         height: 60vh;
     }
+
 </style>
 
 <body>
     <repro-video id=reproductor></repro-video>
     <dragn-drop></dragn-drop>
+    <play-list></play-list>
 
     <script>
         const $reproductor = document.querySelector('#reproductor')
