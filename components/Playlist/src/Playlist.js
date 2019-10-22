@@ -3,7 +3,7 @@ class Playlist extends HTMLElement {
     super(); // Constructor del padre
     // eslint-disable-next-line no-underscore-dangle
     this._shadow = this.attachShadow({ mode: 'open' });
-    this.elements = undefined;
+    this._elements = [];
   }
 
   get shadow() {
@@ -15,9 +15,14 @@ class Playlist extends HTMLElement {
     // eslint-disable-next-line no-underscore-dangle
     this._shadow = val;
   }
+  get elements() {
+    // eslint-disable-next-line no-underscore-dangle
+    return JSON.parse(this._elements);
+  }
+
 
   static get observedAttributes() {
-    return ['elemnts'];
+    return ['elements'];
   }
 
   /**
@@ -34,8 +39,25 @@ class Playlist extends HTMLElement {
     this[`update${name.charAt(0).toUpperCase() + name.slice(1)}`](newValue);
   }
 
-  updateElemets(val) {
-    this.shadow.querySelector('#elemnts').innerHTML = val;
+  updateElements(val) {
+    console.log(val)
+    val = JSON.parse(val)
+    let container = this.shadow.querySelector('#elements')
+    container.innerHTML = ''
+
+    for (let i = 0; i < val.length; i++) {
+      let item = document.createElement('li');
+      let element = val[i];
+      let HTMLelement = `<img src="${element.thumb}" alt=""><div class="title">${element.title} - ${element.subtitle} </div>`
+      item.innerHTML = HTMLelement;
+      container.appendChild(item)
+    }
+  }
+
+  updateAttributes(elements) {
+    let elementos = JSON.stringify(elements)
+    this.setAttribute('elements', elementos)
+    console.log(elements)
   }
 
   connectedCallback() {
