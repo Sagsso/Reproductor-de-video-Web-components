@@ -55,15 +55,15 @@
             padding: 5px;
             text-align: center;
             /* padding: 5px; */
-            background-color: #2d3436;
+            background-color: #FF3C38;
             font-size: 24px;
             color: white;
         }
 
         li {
+            background-color: #2d3436;
             width: 100%;
             height: 35px;
-            background-color: #FF3C38;
             color: white;
             display: flex;
             justify-content: left;
@@ -80,12 +80,20 @@
             width: auto;
         }
 
+        li:hover {
+            cursor: pointer;
+        }
+
         li>div {
             max-height: 100%;
             flex: 7;
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        .playing {
+            background-color: #FF3C38;
         }
     </style>
     <script>

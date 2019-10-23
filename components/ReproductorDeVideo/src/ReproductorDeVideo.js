@@ -91,8 +91,9 @@ class ReproductorDeVideo extends HTMLElement {
   }
 
   updateControls(val) {
-    if (val == true) {
-      this.shadow.querySelector('video').setAttribute("controls", "controls")
+    console.log('Valor de controls: ' + val)
+    if (val == 'true') {
+      this.shadow.querySelector('video').setAttribute("controls", "true")
     } else {
       this.shadow.querySelector('video').removeAttribute('controls');
     }
@@ -102,14 +103,16 @@ class ReproductorDeVideo extends HTMLElement {
     this.setAttribute('volume', volume)
     this.setAttribute('controls', controls)
     this.setAttribute('src', src)
+
   }
 
-  updateElementPlaying({ src, title, description }) {
-    this.setAttribute('src', src)
+  updateElementPlaying({ sources, title, description }) {
+    this.setAttribute('src', sources)
     this.setAttribute('title', title)
     this.setAttribute('description', description)
     this.shadow.querySelector('video').play()
   }
+
   callPending() {
     console.log('holaaa callPending')
 

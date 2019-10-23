@@ -3,7 +3,7 @@ class Playlist extends HTMLElement {
     super(); // Constructor del padre
     // eslint-disable-next-line no-underscore-dangle
     this._shadow = this.attachShadow({ mode: 'open' });
-    this._elements = [];
+    this._elements = undefined;
   }
 
   get shadow() {
@@ -17,7 +17,11 @@ class Playlist extends HTMLElement {
   }
   get elements() {
     // eslint-disable-next-line no-underscore-dangle
-    return JSON.parse(this._elements);
+    return this._elements;
+  }
+  set elements(elements) {
+    // eslint-disable-next-line no-underscore-dangle
+    this._elements = elements;
   }
 
 
@@ -40,14 +44,14 @@ class Playlist extends HTMLElement {
   }
 
   updateElements(val) {
-    console.log(val)
-    val = JSON.parse(val)
+    this.elements = val;
+    let valJson = JSON.parse(val)
     let container = this.shadow.querySelector('#elements')
     container.innerHTML = ''
 
-    for (let i = 0; i < val.length; i++) {
+    for (let i = 0; i < valJson.length; i++) {
       let item = document.createElement('li');
-      let element = val[i];
+      let element = valJson[i];
       let HTMLelement = `<img src="${element.thumb}" alt=""><div class="title">${element.title} - ${element.subtitle} </div>`
       item.innerHTML = HTMLelement;
       container.appendChild(item)
@@ -57,9 +61,29 @@ class Playlist extends HTMLElement {
   updateAttributes(elements) {
     let elementos = JSON.stringify(elements)
     this.setAttribute('elements', elementos)
-    console.log(elements)
+
+    let list = this.shadow.querySelector('#elements');
+    console.log(list)
+
+    Array.from(list.children).forEach(element => {
+      element.onclick = () => {
+        Array.from(list.children).forEach(elementico => {
+          elementico.classList.remove('.playing')
+        });
+        let i = [...list.children].indexOf(element)
+        element.classList.add('.playing')
+        console.log(i)
+        this.sendData(i);
+      }
+    });
   }
 
+  sendData(i) {
+    console.log(this.elements)
+    let elementsJSON = JSON.parse(this.elements)
+    console.log(elementsJSON[i])
+    updatePlayer(elementsJSON[i])
+  }
   connectedCallback() {
     let template;
     fetch('/components/Playlist/template.html', {
