@@ -1,6 +1,7 @@
+/* eslint-disable linebreak-style */
 class ReproductorDeVideo extends HTMLElement {
   constructor() {
-    super()
+    super();
     // eslint-disable-next-line no-underscore-dangle
     this._shadow = this.attachShadow({ mode: 'open' });
     this.src = undefined;
@@ -12,9 +13,9 @@ class ReproductorDeVideo extends HTMLElement {
       status: false,
       pending: {
         methods: [],
-        values: []
-      }
-    }
+        values: [],
+      },
+    };
   }
 
   get shadow() {
@@ -42,8 +43,8 @@ class ReproductorDeVideo extends HTMLElement {
   addListeners() {
     const video = this.shadow.querySelector('video');
     video.onvolumechange = () => {
-      this.volume = Math.round(video.volume * 100)
-    }
+      this.volume = Math.round(video.volume * 100);
+    };
   }
 
   attributeChangedCallback(name, oldVal, newValue) {
@@ -53,7 +54,6 @@ class ReproductorDeVideo extends HTMLElement {
       this.flag.pending.methods.push(`update${name.charAt(0).toUpperCase() + name.slice(1)}`);
       this.flag.pending.values.push(newValue);
     }
-
   }
 
   updateSrc(val) {
@@ -67,7 +67,6 @@ class ReproductorDeVideo extends HTMLElement {
 
   updateDescription(val) {
     this.shadow.querySelector('#description').innerHTML = val;
-    console.log('se llamó')
   }
 
   updateTitle(val) {
@@ -76,29 +75,26 @@ class ReproductorDeVideo extends HTMLElement {
 
   updateControls(val) {
     if (val === 'true') {
-      this.shadow.querySelector('video').setAttribute('controls', 'true')
+      this.shadow.querySelector('video').setAttribute('controls', 'true');
     } else {
       this.shadow.querySelector('video').removeAttribute('controls');
     }
   }
 
   updateAttributes({ volume, controls, src }) {
-    this.setAttribute('volume', volume)
-    this.setAttribute('controls', controls)
-    this.setAttribute('src', src)
-
+    this.setAttribute('volume', volume);
+    this.setAttribute('controls', controls);
+    this.setAttribute('src', src);
   }
 
   updateElementPlaying({ sources, title, description }) {
-    this.setAttribute('src', sources)
-    this.setAttribute('title', title)
-    this.setAttribute('description', description)
-    this.shadow.querySelector('video').play()
+    this.setAttribute('src', sources);
+    this.setAttribute('title', title);
+    this.setAttribute('description', description);
+    this.shadow.querySelector('video').play();
   }
 
   callPending() {
-    console.log('holaaa callPending')
-
     for (let i = 0; i < this.flag.pending.methods.length; i++) {
       const pending = this.flag.pending.methods[i];
       const value = this.flag.pending.values[i];
@@ -119,8 +115,6 @@ class ReproductorDeVideo extends HTMLElement {
         this.addListeners();
       });
     });
-
   }
-
 }
 window.customElements.define('repro-video', ReproductorDeVideo);
