@@ -61,6 +61,7 @@
     }
 
     .notification {
+        font-family: Quicksand;
         font-size: 38px;
         text-align: center;
         width: auto;
@@ -69,6 +70,18 @@
         border-radius: 10px;
         background-color: white;
     }
+
+    /* .loading>div {
+        position: absolute;
+        border: 4px solid rgba(255, 255, 255, 0.9);
+        opacity: 1;
+        border-radius: 50%;
+        animation: lds-ripple 1.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+    }
+
+    .loading>div:nth-child(2) {
+        animation-delay: -0.5s;
+    } */
 </style>
 
 <body>
@@ -87,8 +100,14 @@
             <span>
                 Cargando la configuración
             </span>
+            <h6>Por favor espere</h6>
         </div>
     </div>
+
+    <!-- <div class="loading2">
+        <div></div>
+        <div></div>
+    </div> -->
     <script>
         const $reproductor = document.querySelector('#reproductor')
         const $dropArea = document.querySelector('dragn-drop')
@@ -112,7 +131,12 @@
             let playlist = data.playlist;
             console.log(playlist)
             $playlist.updateAttributes(playlist)
-            $setting.style.display = "none"
+
+            let time = Math.round(1000 * (Math.random() * (3 - 1) + 1));
+            console.log(time)
+            setTimeout(function () {
+                $setting.style.display = "none"
+            }, time)
 
         }
 

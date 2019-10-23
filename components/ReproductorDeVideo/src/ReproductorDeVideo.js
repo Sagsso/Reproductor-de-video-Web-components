@@ -1,6 +1,6 @@
 class ReproductorDeVideo extends HTMLElement {
   constructor() {
-    super(); // Constructor del padre
+    super()
     // eslint-disable-next-line no-underscore-dangle
     this._shadow = this.attachShadow({ mode: 'open' });
     this.src = undefined;
@@ -8,7 +8,6 @@ class ReproductorDeVideo extends HTMLElement {
     this._volume = undefined;
     this.description = undefined;
     this.title = undefined;
-
     this.flag = {
       status: false,
       pending: {
@@ -27,6 +26,7 @@ class ReproductorDeVideo extends HTMLElement {
     // eslint-disable-next-line no-underscore-dangle
     this._shadow = val;
   }
+
   get volume() {
     return this.getAttribute('volume');
   }
@@ -41,23 +41,12 @@ class ReproductorDeVideo extends HTMLElement {
 
   addListeners() {
     const video = this.shadow.querySelector('video');
-    video.onvolumechange = (e) => {
+    video.onvolumechange = () => {
       this.volume = Math.round(video.volume * 100)
     }
   }
-  // /* attributeChangedCallback
-  //    *
-  //    * Se ejecuta cuando el valor de cualquier atributo declarado dentro del arreglo de los
-  // * observedAttributes cambia.
-  // *
-  //    * @param { string } name nombre del atributo que cambia
-  // * @param { mixed } oldVal valor anterior del atributo
-  //   * @param { mixed } newValue nuevo valor del atributo
-  //     * /
+
   attributeChangedCallback(name, oldVal, newValue) {
-    // this[`update${name.charAt(0).toUpperCase() + name.slice(1)}`](newValue);
-
-
     if (this.flag.status) {
       this[`update${name.charAt(0).toUpperCase() + name.slice(1)}`](newValue);
     } else {
@@ -66,11 +55,6 @@ class ReproductorDeVideo extends HTMLElement {
     }
 
   }
-
-  // updateVolume(val) {
-  //   this.volume = Math.round(val * 100);
-  //   console.log('Se cambió el volumen')
-  // }
 
   updateSrc(val) {
     this.shadow.querySelector('video').setAttribute('src', val);
@@ -91,9 +75,8 @@ class ReproductorDeVideo extends HTMLElement {
   }
 
   updateControls(val) {
-    console.log('Valor de controls: ' + val)
-    if (val == 'true') {
-      this.shadow.querySelector('video').setAttribute("controls", "true")
+    if (val === 'true') {
+      this.shadow.querySelector('video').setAttribute('controls', 'true')
     } else {
       this.shadow.querySelector('video').removeAttribute('controls');
     }
