@@ -68,10 +68,10 @@ class Playlist extends HTMLElement {
     Array.from(list.children).forEach(element => {
       element.onclick = () => {
         Array.from(list.children).forEach(elementico => {
-          elementico.classList.remove('.playing')
+          elementico.classList.remove('playing')
         });
         let i = [...list.children].indexOf(element)
-        element.classList.add('.playing')
+        element.classList.add('playing')
         console.log(i)
         this.sendData(i);
       }

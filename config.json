@@ -1,7 +1,7 @@
 {
     "player": {
         "src": null,
-        "controls": false,
+        "controls": true,
         "volume": 100
     },
     "dropArea": {
