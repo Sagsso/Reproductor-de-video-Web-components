@@ -83,9 +83,11 @@ class DragnDrop extends HTMLElement {
 
     area.addEventListener('drop', function (ev) {
       ev.preventDefault();
+      $setting.style.display = "block"
       this.style.background = '#dcdde1'
       let files = ev.dataTransfer.files;
       console.log(files[0])
+
 
       let reader = new FileReader();
       if (files[0].type == "application/json") {

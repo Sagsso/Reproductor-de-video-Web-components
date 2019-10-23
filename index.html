@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Video-Components</title>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700|Yanone+Kaffeesatz&display=swap"
+        rel="stylesheet">
     <link rel="import" href="./components/ReproductorDeVideo/ReproductorDeVideo.html">
     <link rel="import" href="./components/DragnDrop/DragnDrop.html">
     <link rel="import" href="./components/Playlist/Playlist.html">
@@ -21,26 +23,45 @@
         width: 100vw;
         height: 100vh;
         background-color: #2d3436;
-    }
-
-    #reproductor {
-        width: 800px;
-        height: 60vh;
+        display: block;
     }
 
     .container {
         display: flex;
         width: 100%;
+        max-width: 100%;
         height: auto;
+    }
+
+    #reproductor {
+        border-radius: 10px;
     }
 
     .dropable {
         display: flex;
         width: 100%;
+        height: auto;
         justify-content: center;
+        align-items: center;
+        margin-top: 30px;
     }
 
-                    
+    .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 38px;
+        text-align: center;
+        width: auto;
+        height: 80px;
+        padding: 25px;
+        border-radius: 10px;
+        background-color: white;
+        position: fixed;
+        top: 40%;
+        left: 35%;
+        display: none;
+    }
 </style>
 
 <body>
@@ -54,12 +75,14 @@
         <dragn-drop></dragn-drop>
     </div>
 
+    <div class="loading"> Cargando la configuración </div>
     <script>
         const $reproductor = document.querySelector('#reproductor')
         const $dropArea = document.querySelector('dragn-drop')
         const $playlist = document.querySelector('play-list')
+        const $setting = document.querySelector('.loading')
 
-        $reproductor.setAttribute('description', "")
+        $reproductor.setAttribute('description', "Description")
         $reproductor.setAttribute('title', "Sin título")
         $reproductor.setAttribute('volume', "20")
         // $reproductor.setAttribute('controls', "false")
@@ -76,6 +99,8 @@
             let playlist = data.playlist;
             console.log(playlist)
             $playlist.updateAttributes(playlist)
+            $setting.style.display = "none"
+
         }
 
         function updatePlayer(data) {

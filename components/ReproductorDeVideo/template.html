@@ -17,15 +17,14 @@
         }
 
         #reproductor {
-            width: auto;
-            height: 60vh;
-            background: #2d3436;
+            width: 60vw;
+            height: 100%;
+            background: #576574;
             padding: 10px;
-            /* display: flex;
-            flex-flow: column;
-            justify-content: space-between;
-            align-items: center; */
-            /* position: relative; */
+            display: flex;
+            flex-direction: column;
+            flex-flow: wrap;
+            border-right: 2px solid #FF3C38;
         }
 
 
@@ -36,12 +35,18 @@
             height: auto;
             width: 100%;
             font-size: 34px;
+            font-family: Quicksand;
             font-weight: bold;
-            font-family: Helvetica;
             top: 20px;
             color: #ecf0f1;
             margin-bottom: 10px;
+
         }
+
+        .video_container {
+            width: 100%;
+        }
+
 
         video {
             width: 100%;
@@ -56,16 +61,20 @@
             width: 100%;
             font-size: 14px;
             color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
             color: #ecf0f1;
-            font-family: Helvetica;
+            font-family: Quicksand;
             padding: 30px 5px;
         }
     </style>
     <div id="reproductor">
-
         <div id="title"> Title</div>
-        <video src="" controls></video>
+        <div class="video_container">
+            <video src="" controls></video>
+        </div>
         <div id="description">Aquí va la descripción</div>
     </div>
 </body>
