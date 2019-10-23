@@ -83,14 +83,14 @@ class DragnDrop extends HTMLElement {
 
     area.addEventListener('drop', function (ev) {
       ev.preventDefault();
-      $setting.style.display = "block"
-      this.style.background = '#dcdde1'
+      this.style.background = '#576574'
       let files = ev.dataTransfer.files;
       console.log(files[0])
 
 
       let reader = new FileReader();
       if (files[0].type == "application/json") {
+        $setting.style.display = "flex"
         let data;
         reader.onloadend = function () {
           data = JSON.parse(this.result);
@@ -106,12 +106,12 @@ class DragnDrop extends HTMLElement {
     area.addEventListener('dragover', function (ev) {
       ev.preventDefault();
       ev.dataTransfer.dropEffect = 'move';
-      this.style.background = '#2980b9'
+      this.style.background = '#fbc531'
     });
     area.addEventListener('dragleave', function (ev) {
       ev.preventDefault();
       ev.dataTransfer.dropEffect = 'move';
-      this.style.background = '#dcdde1'
+      this.style.background = '#576574'
     });
     area.setAttribute('draggable', 'true')
   }
